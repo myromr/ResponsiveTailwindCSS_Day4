@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../dist/output.css" rel="stylesheet" />
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <title>TailwindCSS Day 4</title>
+</head>
+
+<body>
+  <header>
+    <!-- applied fixed here to make the nav stick on top -->
+    <nav class="fixed z-30 top-0 w-full bg-green-600 flex py-4 px-10">
+      <div class="md:flex items-center justify-center gap-20">
+        <a href="#" class="text-slate-50 text-2xl font-semibold">BrandName</a>
+        <!-- hides on medium screens -->
+        <!-- I added a new div here to wrap the ul to manipulate how i would hide and show the menus -->
+        <div class="md:block hidden" id="nav-menu">
+          <!-- I set the flex direction to flex-row on md: this applies to > 768px and the flex-col which applies to < 768px screens -->
+          <!-- with flex direction you can manipulate the direction of your flex items, horizontal or vertical flex -->
+          <!-- see how you can apply multiple resposive designs in just one line compared to doing media queries in CSS -->
+          <ul class="flex md:flex-row flex-col md:py-0 py-4 gap-3 items-start md:items-center md:gap-4">
+            <li class="text-slate-50 text-base font-medium hover:text-neutral-700 hover:duration-300">
+              <a href="#">Home</a>
+            </li>
+            <li class="text-slate-50 text-base flex gap-2 items-center hover:text-neutral-700 hover:duration-300">
+              <a href="#">Shop</a>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" stroke-width="2"
+                stroke="currentColor" class="w-3.5 h-3.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+              </svg>
+            </li>
+            <li class="text-slate-50 text-base font-medium hover:text-neutral-700 hover:duration-300">
+              <a href="#">About</a>
+            </li>
+            <li class="text-slate-50 text-base font-medium hover:text-neutral-700 hover:duration-300">
+              <a href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="md:flex hidden gap-1 items-center ml-auto">
+        <a href="#" class="text-slate-50 text-base font-medium hover:text-neutral-700 hover:duration-300">Login</a>
+        <span class="text-slate-50">&#47;</span>
+        <a href="#" class="text-slate-50 text-base font-medium hover:text-neutral-700 hover:duration-300">Register</a>
+      </div>
+      <!-- Mobile menu Bar - appear on medium size -->
+      <!-- hidden on > 768px screen sizes-->
+      <div class="md:hidden block ml-auto">
+        <button id="btn-collapse" onclick="toggleMenu()">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8"
+            stroke="currentColor" class="w-6 h-6 stroke-slate-50">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section_images py-24">
+      <!-- applied md: here -->
+      <div class="px-8 grid max-w-5xl mx-auto grid-cols-1 md:grid-cols-[0.7fr_minmax(0px,1fr)] gap-4 sm:gap-3">
+        <div class="relative">
+          <img src="./assets/images/furniture-1.jpg" alt="Furniture Image" class="w-full object-cover" />
+          <div class="absolute top-7 left-7 flex flex-col gap-3">
+            <span class="text-sm font-bold text-green-500">5 items</span>
+            <h2 class="uppercase text-3xl font-bold text-neutral-800">
+              Furniture
+            </h2>
+            <a href="#" class="text-sm hover:underline underline-offset-4 font-bold text-neutral-800">Read More</a>
+          </div>
+        </div>
+        <div class="flex flex-col gap-4 sm:gap-3">
+          <div class="relative">
+            <img src="./assets/images/furniture-2.jpg" alt="Furniture Image" class="w-full h-full object-cover" />
+            <!-- applied sm:  -->
+            <div class="absolute top-5 sm:top-7 left-7 flex flex-col gap-2 sm:gap-3">
+              <span class="text-sm font-bold text-green-500">5 items</span>
+              <h2 class="uppercase sm:text-3xl md:text-2xl text-xl font-bold text-neutral-800">
+                Furniture
+              </h2>
+              <a href="#" class="text-sm hover:underline underline-offset-4 font-bold text-neutral-800">Read More</a>
+            </div>
+          </div>
+          <!-- Applied sm: here -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-3 h-full">
+            <div class="relative">
+              <img src="./assets/images/furniture-3.jpg" alt="Furniture Image" class="w-full h-full object-cover" />
+              <div class="absolute top-7 left-7 flex flex-col gap-3">
+                <span class="text-sm font-bold text-green-500">5 items</span>
+                <h2 class="uppercase text-xl sm:text-2xl font-bold text-neutral-800">
+                  Furniture
+                </h2>
+                <a href="#" class="text-sm hover:underline underline-offset-4 font-bold text-neutral-800">Read More</a>
+              </div>
+            </div>
+            <div class="relative">
+              <img src="./assets/images/furniture-4.jpg" alt="Furniture Image" class="w-full h-full object-cover" />
+              <div class="absolute top-7 left-7 flex flex-col gap-3">
+                <span class="text-sm font-bold text-green-500">5 items</span>
+                <h2 class="uppercase text-xl sm:text-2xl font-bold text-neutral-800">
+                  Furniture
+                </h2>
+                <a href="#" class="text-sm hover:underline underline-offset-4 font-bold text-neutral-800">Read More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- you can delete or not, up to you -->
+    <!-- css style in the input.css file -->
+    <section class="section-example">
+      <span>THIS IS AN EXAMPLE</span>
+    </section>
+
+    <!-- CREATE A NEW SECTION HERE FOR YOUR DAY 4 TASK -->
+
+    <section class="section_featured">
+      <div class="text-center pt-9 pb-3">
+        <span class="text-gray-400 text-2xl font-bold">Featured Products</span>
+        <br>
+        <h2 class="text-6xl font-bold">Featured Products</h2>
+        <br>
+        <p class="text-gray-400">Problems trying to resolve the conflict between<br>two major realms of Classical physics:<br>Newtonian mechanics</p>
+      </div>
+    
+      <div class="flex min-h-screen items-center justify-center">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-40">
+          <div>
+            <div class="group relative items-center overflow-hidden">
+              <div class="h-96 w-72">
+                <img class="h-full w-full object-cover" src="/src/assets/images/feature-1.jpg" alt="#">
+              </div>
+    
+              <!-- Sale -->
+              <div class="absolute top-5 left-5">
+                <div class="bg-red-600 text-white font-bold px-2 py-1 rounded-md">
+                  SALE
+                </div>
+              </div>
+    
+              <!-- Three icons here -->
+              <div class="absolute bottom-0 left-0 right-0 mx-auto">
+                <div class="flex justify-center gap-4 pb-6">
+                  <button class="rounded-full bg-white p-2">
+                    <img src="assets/heart-straight.svg" alt="heart">
+                  </button>
+    
+                  <button class="rounded-full bg-white p-2">
+                    <img src="assets/shopping-cart.svg" alt="cart">
+                  </button>
+    
+                  <button class="rounded-full bg-white p-2">
+                    <img src="assets/eye.svg" alt="eye">
+                  </button>
+                </div>
+              </div>
+            </div>
+    
+            <div class="flex items-center p-7">
+              <div class="mr-auto">
+                <span class="font-extrabold text-orange-600 text-lg">English</span>
+              </div>
+              <div>
+                <span class="flex items-center bg-black text-white rounded-full px-2">
+                  <img src="assets/star-fill.svg" alt="star" class="inline-block align-middle h-3 m-2">
+                  <span class="inline-block align-middle font-extralight">4.9</span>
+                </span>
+              </div>
+            </div>
+    
+            <div class="flex-col pl-7">
+              <span class="font-bold text-xl">Graphic Design</span>
+              <p class="text-gray-400">We focus on ergonomics <br> and meeting you...</p>
+              <div class="flex text-gray-400 items-center">
+                <i class="ph ph-download-simple"></i>
+                <span class="text-sm mr-2">15 Sales</span>
+              </div>
+              <div class="flex mt-5">
+                <button class="bg-blue-500 hover:bg-gray-400 rounded-full w-4 h-4 flex mx-2"></button>
+                <button class="bg-green-700 hover:bg-gray-400 rounded-full w-4 h-4 flex mx-2"></button>
+                <button class="bg-orange-500 hover:bg-gray-400 rounded-full w-4 h-4 flex mx-2"></button>
+                <button class="bg-black hover:bg-gray-400 rounded-full w-4 h-4 flex mx-2"></button>
+              </div>
+            </div>
+    
+            <div class="mt-9 text-center">
+              <button class="text-green-500 border border-green-500 px-8 py-3 rounded-full">
+                Learn more
+                <i class="ph ph-caret-right"></i>
+              </button>
+            </div>
+          </div>
+          <div>
+            <div class="group relative items-center overflow-hidden">
+              <div class="h-96 w-72">
+                <img class="h-full w-full object-cover" src="/src/assets/images/feature-2.jpg" alt="#">
+              </div>
+    
+              <!-- Sale -->
+              <div class="absolute top-5 left-5">
+                <div class="bg-red-600 text-white font-bold px-2 py-1 rounded-md">
+                  SALE
+                </div>
+              </div>
+    
+              <!-- Three icons here -->
+              <div class="absolute bottom-0 left-0 right-0 mx-auto">
+                <div class="flex justify-center gap-4 pb-6">
+                  <button class="rounded-full bg-white p-2">
+                    <img src="assets/heart-straight.svg" alt="heart">
+                  </button>
+    
+                  <button class="rounded-full bg-white p-2">
+                    <img src="assets/shopping-cart.svg" alt="cart">
+                  </button>
+    
+                  <button class="rounded-full bg-white p-2">
+                    <img src="assets/eye.svg" alt="eye">
+                  </button>
+                </div>
+              </div>
+            </div>
+    
+            <div class="flex items-center p-7">
+              <div class="mr-auto">
+                <span class="font-extrabold text-orange-600 text-lg">English</span>
+              </div>
+              <div>
+                <span class="flex items-center bg-black text-white rounded-full px-2">
+                  <img src="assets/star-fill.svg" alt="star" class="inline-block align-middle h-3 m-2">
+                  <span class="inline-block align-middle font-extralight">4.9</span>
+                </span>
+              </div>
+            </div>
+    
+            <div class="flex-col pl-7">
+              <span class="font-bold text-xl">Graphic Design</span>
+              <p class="text-gray-400">We focus on ergonomics <br> and meeting you...</p>
+              <div class="flex text-gray-400 items-center">
+                <i class="ph ph-download-simple"></i>
+                <span class="text-sm mr-2">15 Sales</span>
+              </div>
+              <div class="flex mt-5">
+                <button class="bg-blue-500 hover:bg-gray-400 rounded-full w-4 h-4 flex mx-2"></button>
+                <button class="bg-green-700 hover:bg-gray-400 rounded-full w-4 h-4 flex mx-2"></button>
+                <button class="bg-orange-500 hover:bg-gray-400 rounded-full w-4 h-4 flex mx-2"></button>
+                <button class="bg-black hover:bg-gray-400 rounded-full w-4 h-4 flex mx-2"></button>
+              </div>
+            </div>
+    
+            <div class="mt-9 text-center">
+              <button class="text-green-500 border border-green-500 px-8 py-3 rounded-full">
+                Learn more
+                <i class="ph ph-caret-right"></i>
+              </button>
+            </div>
+          </div>
+          <div>
+            <div class="group relative items-center overflow-hidden">
+              <div class="h-96 w-72">
+                <img class="h-full w-full object-cover" src="/src/assets/images/feature-3.jpg" alt="#">
+              </div>
+    
+              <!-- Sale -->
+              <div class="absolute top-5 left-5">
+                <div class="bg-red-600 text-white font-bold px-2 py-1 rounded-md">
+                  SALE
+                </div>
+              </div>
+    
+              <!-- Three icons here -->
+              <div class="absolute bottom-0 left-0 right-0 mx-auto">
+                <div class="flex justify-center gap-4 pb-6">
+                  <button class="rounded-full bg-white p-2">
+                    <img src="assets/heart-straight.svg" alt="heart">
+                  </button>
+    
+                  <button class="rounded-full bg-white p-2">
+                    <img src="assets/shopping-cart.svg" alt="cart">
+                  </button>
+    
+                  <button class="rounded-full bg-white p-2">
+                    <img src="assets/eye.svg" alt="eye">
+                  </button>
+                </div>
+              </div>
+            </div>
+    
+            <div class="flex items-center p-7">
+              <div class="mr-auto">
+                <span class="font-extrabold text-orange-600 text-lg">English</span>
+              </div>
+              <div>
+                <span class="flex items-center bg-black text-white rounded-full px-2">
+                  <img src="assets/star-fill.svg" alt="star" class="inline-block align-middle h-3 m-2">
+                  <span class="inline-block align-middle font-extralight">4.9</span>
+                </span>
+              </div>
+            </div>
+    
+            <div class="flex-col pl-7">
+              <span class="font-bold text-xl">Graphic Design</span>
+              <p class="text-gray-400">We focus on ergonomics <br> and meeting you...</p>
+              <div class="flex text-gray-400 items-center">
+                <i class="ph ph-download-simple"></i>
+                <span class="text-sm mr-2">15 Sales</span>
+              </div>
+              <div class="flex mt-5">
+                <button class="bg-blue-500 hover:bg-gray-400 rounded-full w-4 h-4 flex mx-2"></button>
+                <button class="bg-green-700 hover:bg-gray-400 rounded-full w-4 h-4 flex mx-2"></button>
+                <button class="bg-orange-500 hover:bg-gray-400 rounded-full w-4 h-4 flex mx-2"></button>
+                <button class="bg-black hover:bg-gray-400 rounded-full w-4 h-4 flex mx-2"></button>
+              </div>
+            </div>
+    
+            <div class="mt-9 text-center">
+              <button class="text-green-500 border border-green-500 px-8 py-3 rounded-full">
+                Learn more
+                <i class="ph ph-caret-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+  <script src="./main.js"></script>
+</body>
+
+</html>
